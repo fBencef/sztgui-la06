@@ -6,7 +6,30 @@
         xmlns:local="clr-namespace:la06.Frontend"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainWIndowViewModel/>
+    </Window.DataContext>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
 
+
+        <ListBox x:Name="listbox" Grid.Row="0" ItemsSource="{Binding Messages}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Label Content="{Binding Sender}"/>
+                        <Label Content="{Binding Content}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBox Width="590" Margin="10"/>
+            <Button Content="Send" Width="150" Margin="10"/>
+        </StackPanel>
     </Grid>
 </Window>
